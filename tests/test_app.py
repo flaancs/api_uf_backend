@@ -33,3 +33,14 @@ def test_uf_value_invalid_format():
 
     assert response.status_code == 400
     assert response.json() == {"detail": "Formato de fecha inválido. Por favor use YYYY-MM-DD."}
+
+
+def test_uf_value_below_minimum_date():
+    """
+    Test for the case where the provided date is below the minimum allowed date (01-01-2013).
+    """
+    date_str = "2012-12-31"
+    response = client.get(f"/uf-value/{date_str}")
+
+    assert response.status_code == 400
+    assert response.json() == {"detail": "La fecha no puede ser menor a 01-01-2013."}
