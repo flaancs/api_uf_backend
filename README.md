@@ -1,16 +1,4 @@
-## Overview
-
-This project is a FastAPI application designed to scrape and return the UF value from the SII website. It leverages Docker for easy setup and deployment, ensuring consistency across different environments.
-
-## Key Components:
-
-- FastAPI: For the web framework to create RESTful endpoints.
-- BeautifulSoup: For scraping the required UF value from the SII website.
-- Docker: To containerize the application, ensuring it runs the same in every environment.
-- docker-compose: To define and run multi-container Docker applications.
-- Makefile (for macOS/Linux users): To simplify the command execution for building, running, and managing the Docker containers.
-
-## Running the API
+## Getting started
 
 ### MacOS
 
@@ -97,3 +85,11 @@ make bash
 ```bash
 docker exec -ti api_uf_backend /bin/bash
 ```
+
+## Key Features:
+
+- FastAPI: For the web framework to create RESTful endpoints.
+- BeautifulSoup: For scraping the required UF value from the SII website.
+- Docker: To containerize the application, ensuring it runs the same in every environment.
+- docker-compose: To define and run multi-container Docker applications.
+- Makefile (for macOS/Linux users): To simplify the command execution for building, running, and managing the Docker containers.
