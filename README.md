@@ -58,6 +58,8 @@ docker-compose down
 
 Once running, access the API at `http://localhost:8000`. Use the `value_uf/{date}` endpoint to interact with the API.
 
+**Also, you can access `http://localhost:8000/docs` to see the api documentation**
+
 #### Note: {date} parameter must be in YYYY-MM-DD Format
 
 ## Running tests
