@@ -81,7 +81,7 @@ docker-compose run --rm test pytest -v
 ```
 
 ```bash
-	docker-compose run --rm test pytest --cov=app --cov-report term-missing --cov-report html
+docker-compose run --rm test pytest --cov=app --cov-report term-missing --cov-report html
 ```
 
 ## Entering the container
