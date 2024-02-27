@@ -1,5 +1,6 @@
-import requests
 from bs4 import BeautifulSoup
+from app.redis_client import RedisClient
+import requests
 import os
 
 def get_uf_value(year: int, month: int, day: int) -> str:
@@ -10,6 +11,12 @@ def get_uf_value(year: int, month: int, day: int) -> str:
     :param day: Day of the date.
     :return: The value of UF for the specified date.
     """ 
+    redis_client = RedisClient(host='redis', port=6379, db=0)
+    redis_value = redis_client.get_value(f"{year}-{month}-{day}")
+
+    if redis_value:
+        return redis_value
+
     base_url = os.getenv('BASE_URL', None)
     final_url = f"{base_url}{year}.htm"
     response = requests.get(final_url)
@@ -47,8 +54,12 @@ def get_uf_value(year: int, month: int, day: int) -> str:
                 uf_value = row.find_all('td')[month_index-1].text.strip()
                 if uf_value == "":
                     raise ValueError("No se ha encontrado el valor de UF para la fecha especificada.")
+                redis_client.set_value(
+                    f"{year}-{month}-{day}", 
+                    uf_value
+                )
                 return uf_value
-        
+
         raise ValueError("No se ha encontrado el valor de UF para la fecha especificada.")
     except Exception as e:
         raise Exception(e)
