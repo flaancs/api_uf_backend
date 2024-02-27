@@ -1,5 +1,5 @@
 import pytest
-from scraping.uf_scraper import get_uf_value
+from app.services.uf_services import get_uf_value
 
 def test_get_uf_value(mock_response, uf_html_response):
     """
