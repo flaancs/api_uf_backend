@@ -81,3 +81,17 @@ docker-compose run --rm test pytest -v
 ```bash
 docker-compose run --rm test pytest --cov=app --cov=scraping --cov-report term-missing --cov-report html
 ```
+
+## Entering the container
+
+### MacOS
+
+```bash
+make bash
+```
+
+### Windows
+
+```bash
+docker exec -ti api_uf_backend /bin/bash
+```

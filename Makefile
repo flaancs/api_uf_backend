@@ -14,6 +14,10 @@ build:
 	@echo "Building docker images..."
 	docker-compose build
 
+bash:
+	@echo "Starting bash..."
+	docker exec -ti api_uf_backend /bin/bash
+
 test:
 	@echo "Running tests..."
 	docker-compose run --rm test pytest -v
@@ -27,6 +31,7 @@ help:
 	@echo "up       - Start all services (in background) for the API."
 	@echo "down     - Stop all services for the API."
 	@echo "build    - Build all docker images for the API."
+	@echo "bash     - Start bash in the container."
 	@echo "test     - Run all tests."
 	@echo "coverage - Show code coverage."
 	@echo "help     - Show this help message."
