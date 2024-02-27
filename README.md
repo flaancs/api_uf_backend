@@ -89,6 +89,7 @@ docker exec -ti api_uf_backend /bin/bash
 ## Key Features:
 
 - FastAPI: For the web framework to create RESTful endpoints.
+- Redis: Implemented as a caching system and in-memory database, optimizing performance by storing frequently accessed data and avoiding repetitive requests to external sources.
 - BeautifulSoup: For scraping the required UF value from the SII website.
 - Docker: To containerize the application, ensuring it runs the same in every environment.
 - docker-compose: To define and run multi-container Docker applications.

@@ -10,7 +10,15 @@ services:
       - "8000:8000"
     environment:
       - BASE_URL=https://www.sii.cl/valores_y_fechas/uf/uf
-      
+    depends_on:
+      - redis
+
+  redis:
+    image: "redis:alpine"
+    container_name: redis_api_uf
+    ports:
+      - "6379:6379"
+
   test:
     build: .
     volumes:
