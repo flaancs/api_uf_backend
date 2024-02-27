@@ -23,6 +23,14 @@ async def uf_value(date_str: str):
             detail="Formato de fecha inválido. Por favor use YYYY-MM-DD."
         )
     
+    # Verify that the date is not less than 01-01-2013
+    min_date = datetime(2013, 1, 1)
+    if date < min_date:
+        raise HTTPException(
+            status_code=400,
+            detail="La fecha no puede ser menor a 01-01-2013."
+        )
+    
     try:
         uf_value = get_uf_value(date.year, date.month, date.day)
         return {"uf_value": uf_value}
