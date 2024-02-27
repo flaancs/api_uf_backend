@@ -20,11 +20,11 @@ bash:
 
 test:
 	@echo "Running tests..."
-	docker-compose run --rm test pytest -v
+	docker-compose run --rm test pytest -v --disable-warnings
 
 coverage:
 	@echo "Running coverage..."
-	docker-compose run --rm test pytest --cov=app --cov-report term-missing --cov-report html
+	docker-compose run --rm test pytest --cov=app --cov-report term-missing --cov-report html --disable-warnings
 
 help:
 	@echo "Makefile commands:"
