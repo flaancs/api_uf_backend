@@ -11,11 +11,14 @@ def get_uf_value(year: int, month: int, day: int) -> str:
     :param day: Day of the date.
     :return: The value of UF for the specified date.
     """ 
-    redis_client = RedisClient(host='redis', port=6379, db=0)
-    redis_value = redis_client.get_value(f"{year}-{month}-{day}")
+    try:
+        redis_client = RedisClient(host='redis', port=6379, db=0)
+        redis_value = redis_client.get_value(f"{year}-{month}-{day}")
 
-    if redis_value:
-        return redis_value
+        if redis_value:
+            return redis_value
+    except Exception as e:
+        print(f"Error al intentar obtener el valor de UF desde Redis: {e}")
 
     base_url = os.getenv('BASE_URL', None)
     final_url = f"{base_url}{year}.htm"
