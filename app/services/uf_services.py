@@ -57,10 +57,13 @@ def get_uf_value(year: int, month: int, day: int) -> str:
                 uf_value = row.find_all('td')[month_index-1].text.strip()
                 if uf_value == "":
                     raise ValueError("No se ha encontrado el valor de UF para la fecha especificada.")
-                redis_client.set_value(
-                    f"{year}-{month}-{day}", 
-                    uf_value
-                )
+                try:
+                    redis_client.set_value(
+                        f"{year}-{month}-{day}", 
+                        uf_value
+                    )
+                except Exception as e:
+                    print(f"Error al intentar guardar el valor de UF en Redis: {e}")
                 return uf_value
 
         raise ValueError("No se ha encontrado el valor de UF para la fecha especificada.")
